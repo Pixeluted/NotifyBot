@@ -4,7 +4,7 @@ const schedule = require("node-schedule");
 const axios = require("axios");
 dotenv.config();
 
-const RecievierID = "333625102836957199";
+const RecievierID = "REPLACE_WITH_YOUR_ID";
 let lastMessage = null;
 
 const client = new Discord.Client({
