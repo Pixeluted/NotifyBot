@@ -92,33 +92,9 @@ function sendNotification() {
 client.on("ready", () => {
   console.log("Bot has sucessfully logged in!");
 
-  const job = schedule.scheduleJob("* * * * *", function () {
+  const job = schedule.scheduleJob("0 7 * * * Europe/Prague", function () {
+    // This will send the message every 7AM in Prague timezone
     sendNotification();
-  });
-
-  console.log("Message job scheduled!");
-
-  console.log("SENDING TEST NOTIFICATION");
-
-  sendNotification();
-
-  console.log("SENDING TEST FAILED WEBHOOK");
-
-  const embed = {
-    title: "Failed to delete last message!",
-    description:
-      "I have failed to delete the last message in our DMs \n ```\n" +
-      "peepopoppoperroragdz" +
-      " ```",
-    color: Discord.Colors.Red,
-  };
-
-  axios({
-    method: "POST",
-    url: process.env.FAILED_WEBHOOK,
-    data: {
-      embeds: [embed],
-    },
   });
 });
 
